@@ -106,19 +106,20 @@
 
 <body>
     <div id="div-painel">
+        <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
         {{-- login div --}}
         <div class="div-centro" id="div-login">
             <div id="div-header">
                 <h5>Login</h5>
             </div>
-            <form id="form-login">
+            <form id="form-login" action="{{route('logar')}}">
                 <div id="div-conteudo">
                     <h5>Email</h5>
                     <input type="text" name="email" id="email-login">
                     <h5>Senha</h5>
                     <input type="password" name="senha" id="senha-login">
                     <div class="div-botao">
-                        <button type="button" id="botao-submeter">Confirmar</button>
+                        <button id="botao-submeter">Confirmar</button>
                     </div>
                 </div>
             </form>
@@ -132,7 +133,6 @@
                 <h5>Registro</h5>
             </div>
             <form id="form-registro" action="{{route('registro')}}">
-                <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                 <div id="div-conteudo" style="margin-top: 5% !important;">
                     <h5>Nome</h5>
                     <input type="text" name="nome" id="nome-registro" required>
@@ -154,7 +154,7 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/iziToast.min.js') }}"></script>
     <script src="{{ asset('js/login/troca-formularios.js') }}"></script>
-    <script src="{{ asset('js/login/registro.js') }}"></script>
     <script src="{{ asset('js/login/login.js') }}"></script>
+    <script src="{{ asset('js/login/registro.js') }}"></script>
 </body>
 </html>

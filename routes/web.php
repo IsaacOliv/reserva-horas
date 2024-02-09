@@ -7,7 +7,7 @@ Route::get('/login', function(){
     return view('login');
 })->name('login');
 
-Route::post ('/logar', [\App\Http\Controllers\LoginController::class, 'logar']);
+Route::post ('/logar', [\App\Http\Controllers\LoginController::class, 'logar'])->name('logar');
 Route::post('/cadastrar', [\App\Http\Controllers\RegistroController::class, 'registro'])->name('registro');
 Route::any('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 

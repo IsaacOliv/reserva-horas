@@ -4,6 +4,9 @@ const verifica = (form) => {
     let senha = $('#senha-registro').val();
     let _token = $('#_token').val();
     let action = form.attr('action');
+    $('#nome-registro').css({"border": ""});
+    $('#email-registro').css({"border": ""});
+    $('#senha-registro').css({"border": ""});
     dados = {
         nome:nome,
         email:email,
@@ -13,14 +16,12 @@ const verifica = (form) => {
     registrar(dados, action);
 }
 
-
 function registrar(dados, action) {
     $.ajax({
         type: "post",
         url: action,
         data: dados,
         success: function (response) {
-            console.log(response);
             $('#nome-registro').val('').css({"border": ""});
             $('#email-registro').val('').css({"border": ""});
             $('#senha-registro').val('').css({"border": ""});
@@ -47,9 +48,6 @@ function registrar(dados, action) {
 
 function verificaCampos(dado) {
     $(`#${dado}`).css({"border": "1px solid red"});
-}
-function limpaCssCampos(dados){
-
 }
 
 $('#form-registro').on('submit', function(e) {

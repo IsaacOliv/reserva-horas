@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function logar(\Illuminate\Http\Request $request)
+    public function logar(\App\Http\Requests\LoginRequest $request)
     {
         try {
             if (Auth::attempt(['email' => $request->email, 'password' => $request->senha, 'ativo' => 1])) {
