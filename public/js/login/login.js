@@ -33,13 +33,18 @@ function logar(dados, action) {
                 });
             }, 2000)
         },error: function (response){
-            $.each(response.responseJSON.errors, function (indexInArray, valueOfElement) {
-                verificaCampos(indexInArray+'-login');
+            if (response.responseJSON.falha) {
                 iziToast.error({
-                    message: valueOfElement,
+                    message: response.responseJSON.falha,
                 });
-            });
-
+            }else{
+                $.each(response.responseJSON.errors, function (indexInArray, valueOfElement) {
+                    verificaCampos(indexInArray+'-login');
+                    iziToast.error({
+                        message: valueOfElement,
+                    });
+                });
+            }
         }
     });
  }

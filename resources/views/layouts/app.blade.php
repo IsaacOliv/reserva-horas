@@ -43,7 +43,7 @@
                 {{\Illuminate\Support\Facades\Auth::user()->nome}}
             </button>
             <ul class="dropdown-menu text-end" style="right: 0 !important; left: auto; width: 5px !important; padding: 5px;">
-                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                <li><a class="dropdown-item" href="{{route('detalhes.da.conta', ['id' => \Illuminate\Support\Facades\Auth::user()->id])}}">Perfil</a></li>
                 {{-- <li><a class="dropdown-item" href="#"></a></li> --}}
                 {{-- <li><a class="dropdown-item" href="#"></a></li> --}}
                 {{-- <hr> --}}

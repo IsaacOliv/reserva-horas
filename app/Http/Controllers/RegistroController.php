@@ -10,7 +10,7 @@ class RegistroController extends Controller
             $criar = [
                 'nome' => trim($request->nome),
                 'email' => trim($request->email),
-                'password' => \Illuminate\Support\Facades\Hash::make($request->senha),
+                'senha' => \Illuminate\Support\Facades\Hash::make($request->senha),
                 'id_tipo' => 2
             ];
             $usuario = \App\Models\User::create($criar);

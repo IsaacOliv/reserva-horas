@@ -51,6 +51,10 @@ class User extends Authenticatable
         return $this->belongsTo(\App\Models\Tipos_usuario::class, 'id_tipo', 'id');
     }
 
+    public function detalhes(){
+        return $this->hasOne(\App\Models\Detalhes_usuario::class, 'id_usuario', 'id');
+    }
+
     public function getAuthPassword()
     {
         return $this->senha;

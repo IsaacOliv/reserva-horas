@@ -14,7 +14,7 @@ class LoginController extends Controller
                 $response['sucesso'] = 'logado com sucesso';
                 return response()->json($response);
             } else {
-                $response['falha'] = 'Não foi possivel efetuar o login';
+                $response['falha'] = 'Email ou senha incorretos ou usuario desabilitado';
                 return response()->json($response, 401);
             }
         } catch (\Exception $ex) {

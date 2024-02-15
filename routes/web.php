@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/login', function(){
     return view('login');
 })->name('login');
@@ -14,6 +13,10 @@ Route::any('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])-
 Route::middleware(['auth'])->group(function () {
     Route::controller(\App\Http\Controllers\InicioController::class)->group(function(){
         Route::get('/', 'inicio')->name('inicio');
+    });
+    Route::controller(\App\Http\Controllers\ContaController::class)->prefix('conta')->group(function(){
+        Route::get('/detalhes/{id}', 'detalhes')->name('detalhes.da.conta');
+        Route::post('/detalhes/{id}', 'update')->name('editar-detalhes-da-conta');
     });
     Route::resource('horario',\App\Http\Controllers\horarioController::class);
 });

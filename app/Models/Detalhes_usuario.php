@@ -9,7 +9,8 @@ class Detalhes_usuario extends Model
     protected $table = 'detalhes_usuarios';
 
     protected $fillable = [
-        'imagem_perfil',
+        'imagem_time',
+        'sobrenome',
         'cpf',
         'telefone',
         'endereco',

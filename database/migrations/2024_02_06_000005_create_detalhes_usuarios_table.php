@@ -15,7 +15,8 @@ class CreateDetalhesUsuariosTable extends Migration
     {
         Schema::create('detalhes_usuarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('imagem_perfil')->nullable();
+            $table->string('sobrenome');
+            $table->string('imagem_time')->nullable();
             $table->string('cpf');
             $table->integer('telefone');
             $table->string('endereco')->nullable();
