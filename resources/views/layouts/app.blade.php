@@ -31,6 +31,7 @@
            border-radius: 100px;
            gap: 5px;
         }
+
     </style>
     @yield('head')
 </head>

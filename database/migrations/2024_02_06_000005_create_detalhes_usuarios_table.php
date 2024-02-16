@@ -17,8 +17,8 @@ class CreateDetalhesUsuariosTable extends Migration
             $table->increments('id');
             $table->string('sobrenome');
             $table->string('imagem_time')->nullable();
-            $table->string('cpf');
-            $table->integer('telefone');
+            $table->string('cpf', 14);
+            $table->string('telefone', 14);
             $table->string('endereco')->nullable();
             $table->date('dt_nascimento');
             $table->unsignedInteger('id_usuario');

@@ -10,6 +10,10 @@
 
     <title>Conta</title>
     <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
         #div-painel {
             display: flex;
             position: relative;
@@ -26,8 +30,9 @@
             height: 400px;
             border-radius: 50px;
             text-align: center;
-            /* background-color: transparent; */
             background-color: #2F4F4F;
+            /* background-color: #2F4F4F; */
+            /* animation: colorRotate infinite linear 1s; */
             /* opacity: 50%; */
         }
 
@@ -58,7 +63,10 @@
             justify-content: center;
             align-items: center;
             margin-top: 10%;
-
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
         }
 
         #div-footer {
@@ -70,11 +78,10 @@
         #div-footer-cadastro {
             margin-top: 5%;
             text-align: center;
-            font-family: Arial, Helvetica, sans-serif;
         }
 
         button {
-            background-color: #6495ED;
+            background-color: #468ebe;
             border: 0px;
             width: 50%;
             border-radius: 10px
@@ -88,7 +95,7 @@
             display: none;
         }
 
-        .div-botao{
+        .div-botao {
             width: 100%;
             text-align: center;
             margin-top: 10%
@@ -97,9 +104,12 @@
         input {
             border-radius: 100px;
             border: none;
+            padding: 0 10px;
+            outline: none;
         }
-        a{
-            text-decoration-line:none
+
+        a {
+            text-decoration-line: none
         }
     </style>
 </head>
@@ -112,19 +122,27 @@
             <div id="div-header">
                 <h5>Login</h5>
             </div>
-            <form id="form-login" action="{{route('logar')}}">
+            <form id="form-login" action="{{ route('logar') }}">
                 <div id="div-conteudo">
-                    <h5>Email</h5>
-                    <input type="text" name="email" id="email-login">
-                    <h5>Senha</h5>
-                    <input type="password" name="senha" id="senha-login">
+                    <div>
+                        <label for="email-login">E-mail</label>
+                        <div>
+                            <input type="text" name="email" id="email-login">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="senha-login">Senha</label>
+                        <div>
+                            <input type="password" name="senha" id="senha-login">
+                        </div>
+                    </div>
                     <div class="div-botao">
                         <button id="botao-submeter">Confirmar</button>
                     </div>
                 </div>
             </form>
             <div id="div-footer">
-                <a href="#" id="trocar-formulario">Não tenho uma conta?</a>
+                <a href="#" id="trocar-formulario">Não tenho uma conta</a>
             </div>
         </div>
         {{-- registro div --}}
@@ -132,14 +150,26 @@
             <div id="div-header-registro">
                 <h5>Registro</h5>
             </div>
-            <form id="form-registro" action="{{route('registro')}}">
+            <form id="form-registro" action="{{ route('registro') }}">
                 <div id="div-conteudo" style="margin-top: 5% !important;">
-                    <h5>Nome</h5>
-                    <input type="text" name="nome" id="nome-registro" required>
-                    <h5>Email</h5>
-                    <input type="text" name="email" id="email-registro" required>
-                    <h5>Senha</h5>
-                    <input type="password" name="senha" id="senha-registro" required>
+                    <div>
+                        <label for="nome-registro">Nome</label>
+                        <div>
+                            <input type="text" name="nome" id="nome-registro" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email-registro">E-mail</label>
+                        <div>
+                            <input type="text" name="email" id="email-registro" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="senha-registro">Senha</label>
+                        <div>
+                            <input type="password" name="senha" id="senha-registro" required>
+                        </div>
+                    </div>
                     <div class="div-botao">
                         <button id="botao-submeter-registro">Confirmar</button>
                     </div>
@@ -157,4 +187,5 @@
     <script src="{{ asset('js/login/login.js') }}"></script>
     <script src="{{ asset('js/login/registro.js') }}"></script>
 </body>
+
 </html>
