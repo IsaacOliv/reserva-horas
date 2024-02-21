@@ -22,7 +22,8 @@ class User extends Authenticatable
         'email',
         'senha',
         'ativo',
-        'id_tipo'
+        'id_tipo',
+        'tema'
     ];
 
     /**
@@ -45,6 +46,18 @@ class User extends Authenticatable
         'senha' => 'hashed',
     ];
 
+    public function getTema()
+    {
+        if ($this->tema == 0) {
+            $tema = 'light';
+            $icone = 'bi bi-sun';
+        }else{
+            $tema = 'dark';
+            $icone = 'bi bi-moon';
+        }
+        return ['tema' => $tema, 'icone' => $icone];
+
+    }
 
     public function user()
     {

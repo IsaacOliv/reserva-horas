@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('senha');
             $table->boolean('ativo')->default(1);
+            $table->boolean('tema')->default(0);
             $table->unsignedtinyInteger('id_tipo');
             $table->rememberToken();
             $table->timestamps();

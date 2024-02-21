@@ -11,8 +11,10 @@ Route::post('/cadastrar', [\App\Http\Controllers\RegistroController::class, 'reg
 Route::any('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
+
     Route::controller(\App\Http\Controllers\InicioController::class)->group(function(){
         Route::get('/', 'inicio')->name('inicio');
+        Route::put('/alterar-tema', 'alterarTema')->name('alterar-tema');
     });
     Route::controller(\App\Http\Controllers\ContaController::class)->prefix('conta')->group(function(){
         Route::get('/detalhes/{id}', 'detalhes')->name('detalhes.da.conta');

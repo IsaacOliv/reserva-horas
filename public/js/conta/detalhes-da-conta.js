@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('form').on('submit', function (e) {
+    $('#editar-conta').on('submit', function (e) {
         e.preventDefault();
         if ($('.form-control').attr('disabled')) {
             $('.form-control').removeAttr('disabled');
@@ -12,26 +12,12 @@ $(document).ready(function () {
         }
     });
 
-    $('#cpf').on('keypress', function (e) {
-        if ($(this).val().length < 14) {
-            cpf($(this).val());
-        }else{
-            e.preventDefault();
-        }
-    });
-
-    $('#telefone').on('keypress', function (e) {
-        if ($(this).val().length < 14) {
-            telefone($(this).val());
-        }else{
-            e.preventDefault();
-        }
-    });
 });
 
 function cadastrarInformacoes(form)
 {
     var formData = new FormData(form[0]);
+    $('input').removeClass('border border-danger');
     $.ajax({
         type: "post",
         url: form.attr('action'),
@@ -48,41 +34,35 @@ function cadastrarInformacoes(form)
                 <img style="text-align: center; max-width: 30vw"
                     src="/storage/${response.imagem}" alt="imagem do time">
                 `);
+
+
             iziToast.success({
                 message: response.sucesso,
             });
+        },error:function(response){
+            if (response.responseJSON.error) {
+                $.each(response.responseJSON.errors, function (indexInArray, valueOfElement) {
+                    if (!$(`#${indexInArray}`).hasClass('border border-danger')) {
+                        $(`#${indexInArray}`).addClass('border border-danger')
+                    }
+                    if (valueOfElement.length > 1) {
+                        $.each(valueOfElement, function (indexInArray, valueOfElement) {
+                            iziToast.error({
+                                message: valueOfElement,
+                            });
+                        });
+                    }else{
+                        iziToast.error({
+                            message: valueOfElement,
+                        });
+                    }
+                });
+            }else if(response.responseJSON.falha){
+                $(`#${response.responseJSON.campo}`).addClass('border border-danger')
+                iziToast.error({
+                    message: response.responseJSON.falha,
+                });
+            }
         }
     });
-}
-
-function cpf(v){
-
-    //Remove tudo o que não é dígito
-    v=v.replace(/\D/g,"")
-
-    //Coloca um ponto entre o terceiro e o quarto dígitos
-    v=v.replace(/(\d{3})(\d)/,"$1.$2")
-
-    //Coloca um ponto entre o terceiro e o quarto dígitos
-    //de novo (para o segundo bloco de números)
-    v=v.replace(/(\d{3})(\d)/,"$1.$2")
-
-    //Coloca um hífen entre o terceiro e o quarto dígitos
-    v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
-
-   $('#cpf').val(v);
-}
-
-function telefone(v){
-
-    //Remove tudo o que não é dígito
-    v=v.replace(/\D/g,"")
-
-    //Coloca entre parenteses o primeiro e o seguindo digito
-    v=v.replace(/(\d{1})(\d)/,"($1$2)")
-
-    //Coloca um hifen dentre o setimo e o oitavo digito
-    v=v.replace(/(\d{5})(\d)/,"$1-$2")
-
-   $('#telefone').val(v);
 }
