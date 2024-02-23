@@ -46,6 +46,8 @@
             </button>
             <ul class="dropdown-menu text-end"
                 style="right: 0 !important; left: auto; width: 5px !important; padding: 5px;">
+                <li><a class="dropdown-item" href="{{route("meus.horarios")}}">Meus horarios <i class="bi bi-stopwatch-fill"></i></a></li>
+
                 <li><a class="dropdown-item" href="{{ route('detalhes.da.conta', ['id' => \Illuminate\Support\Facades\Auth::user()->id]) }}">Perfil
                         <i class="bi bi-person-fill"></i></a></li>
                         <form action="{{route('alterar-tema')}}" method="put" id="form-alterar-tema">
@@ -54,7 +56,6 @@
                                 <button class="dropdown-item" id="alterar-tema">Tema <i id="icone-tema" class="{{ Auth::user()->getTema()['icone'] }}"></i></button>
                             </li>
                         </form>
-                {{-- <li><a class="dropdown-item" href="#"></a></li> --}}
                 {{-- <li><a class="dropdown-item" href="#"></a></li> --}}
                 <hr>
                 <li><a class="dropdown-item" href="{{ route('logout') }}">Sair</a></li>
@@ -68,7 +69,10 @@
                 <ul class="list-group text-center" id="barra-lateral"
                     style="padding: 10px; display:flex; gap:5px; flex-direction: column">
                     <a class="nav-link" aria-current="page" href="/">Inicio</a>
+                    <a class="nav-link" href="{{ route('inicio.horario') }}">Horarios</a>
+                    {{-- menu admin --}}
                     <a class="nav-link" href="{{ route('horario.index') }}">Cadastrar horario</a>
+                    <a class="nav-link" href="{{ route('noticias.index') }}">Cadastrar noticias</a>
                 </ul>
             </div>
         </aside>

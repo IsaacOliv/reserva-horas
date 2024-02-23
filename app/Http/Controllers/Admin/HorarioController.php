@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
 
-class horarioController extends Controller
+class HorarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -69,7 +69,7 @@ class horarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(string $id)
     {
         //
     }

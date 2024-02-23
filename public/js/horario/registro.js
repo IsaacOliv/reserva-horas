@@ -59,7 +59,7 @@ $('#cadastro-horario').on('submit', function (e) {
 function registra_horario(dados) {
     $.ajax({
         type: "post",
-        url: "/horario",
+        url: "/admin/horario",
         data: dados,
         success: function (response){
             iziToast.success({

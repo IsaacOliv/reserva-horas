@@ -30,7 +30,7 @@
 @endsection
 @section('conteudo')
         <div style="display: flex; justify-content: center; align-items: center;">
-            <form class="row g-3" id="cadastro-horario">
+            <form class="row g-3" id="cadastro-horario" style="padding: 10px 0 5px 0">
                 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                 <div class="col-md-6">
                     <label for="hora_inicio" class="form-label">Inicio</label>

@@ -15,13 +15,13 @@ class CreateDetalhesUsuariosTable extends Migration
     {
         Schema::create('detalhes_usuarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('sobrenome');
+            $table->string('sobrenome')->nullable();
             $table->string('imagem_time')->nullable();
             $table->string('cpf', 14);
             $table->string('telefone', 14);
             $table->string('endereco')->nullable();
             $table->date('dt_nascimento');
-            $table->unsignedInteger('id_usuario');
+            $table->unsignedBigInteger('id_usuario');
             $table->timestamps();
 
             $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');

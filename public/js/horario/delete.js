@@ -41,7 +41,7 @@ function aplicarEveneListenerDoClickDoBotaoDeExcluir(){
 function deleta_hora(dados) {
     $.ajax({
         type: "delete",
-        url: `/horario/${dados.id}`,
+        url: `/admin/horario/${dados.id}`,
         data: {_token : dados.token},
         success: function (response){
             $(`#tr-hora-${dados.id}`).remove();

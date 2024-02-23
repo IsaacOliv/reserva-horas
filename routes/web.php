@@ -12,18 +12,27 @@ Route::any('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])-
 
 Route::middleware(['auth'])->group(function () {
 
+    //usuario
     Route::controller(\App\Http\Controllers\InicioController::class)->group(function(){
         Route::get('/', 'inicio')->name('inicio');
         Route::put('/alterar-tema', 'alterarTema')->name('alterar-tema');
     });
     Route::controller(\App\Http\Controllers\ContaController::class)->prefix('conta')->group(function(){
-        Route::get('/detalhes/{id}', 'detalhes')->name('detalhes.da.conta');
-        Route::post('/detalhes/{id}', 'update')->name('editar-detalhes-da-conta');
+        Route::get('/detalhes}', 'detalhes')->name('detalhes.da.conta');
+        Route::post('/detalhes', 'update')->name('editar-detalhes-da-conta');
+        Route::get('/meus-horarios', 'horarios')->name('meus.horarios');
+        Route::delete('/desmarcar-horario', 'desmarcar')->name('desmarcar.horarios');
     });
-    Route::resource('horario',\App\Http\Controllers\horarioController::class);
-});
+    Route::controller(\App\Http\Controllers\Usuario\HorarioController::class)->group(function(){
+        Route::get('/horarios', 'inicio')->name('inicio.horario');
+        Route::post('/reservar-horario', 'reservar')->name('reservar.horario');
+    });
 
-// Route::controller(\App\Http\Controllers\horarioController::class)->prefix('horario')->group(function(){
-//     Route::get('/', 'formulario')->name('cadastrar.horario');
-//     Route::post('/','registro')->name('registrar.horario');
-// });
+
+    //admin
+    Route::prefix('admin')->group(function(){
+        Route::resource('horario',\App\Http\Controllers\Admin\HorarioController::class);
+        Route::resource('noticias', \App\Http\Controllers\Admin\NoticiasController::class);
+    });
+
+});

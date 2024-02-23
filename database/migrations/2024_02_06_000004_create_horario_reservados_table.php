@@ -15,8 +15,9 @@ class CreateHorarioReservadosTable extends Migration
     {
         Schema::create('horario_reservados', function (Blueprint $table) {
             $table->increments('id');
+            $table->boolean('reservado')->default(true);
             $table->unsignedInteger('id_horario');
-            $table->unsignedInteger('id_usuario');
+            $table->unsignedBigInteger('id_usuario');
             $table->timestamps();
 
             $table->foreign('id_horario')->references('id')->on('horarios');

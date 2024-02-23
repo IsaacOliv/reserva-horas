@@ -68,6 +68,11 @@ class User extends Authenticatable
         return $this->hasOne(\App\Models\Detalhes_usuario::class, 'id_usuario', 'id');
     }
 
+    public function horariosReservados()
+    {
+        return $this->hasMany(\App\Models\Horario_reservado::class, 'id_usuario', 'id')->with('horario')->where('reservado', true);
+    }
+
     public function getAuthPassword()
     {
         return $this->senha;

@@ -18,8 +18,11 @@ class Horario extends Model
         'hora_fim' => TimeCast::class,
     ];
 
-    public function getDiaSemana($dia_semana)
+    public function getDiaSemana($dia_semana = null)
     {
+        if ($dia_semana == null) {
+            $dia_semana = $this->dia_semana;
+        }
         switch ($dia_semana) {
             case '1':
                 return 'Domingo';

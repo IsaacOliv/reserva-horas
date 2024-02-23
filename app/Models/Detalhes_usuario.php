@@ -20,4 +20,9 @@ class Detalhes_usuario extends Model
     protected $casts = [
         'dt_nascimento' => 'datetime:Y-m-d'
     ];
+
+    public function user()
+    {
+        return $this->belongsToOne(User::class, 'id_usuario', 'id');
+    }
 }

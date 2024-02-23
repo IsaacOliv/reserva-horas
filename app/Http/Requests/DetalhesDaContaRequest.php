@@ -25,9 +25,9 @@ class DetalhesDaContaRequest extends FormRequest
     {
         return [
             'imagem_time' => 'mimes:jpg,bmp,png|size:4000',
-            'sobrenome' => 'min:3|max:50|regex:/^[a-zA-Z]+$/u',
+            'sobrenome' => 'nullable|min:3|max:50|regex:/^[a-zA-Z]+$/u',
             'email' => 'required|max:100|email|unique:users,email,'.$this->id,
-            'endereco' => 'required|min:3|max:200',
+            'endereco' => 'nullable|min:3|max:200',
             'cpf' => 'required|digits:11',
             'telefone' => 'required|digits:11',
             'dt_nascimento' => 'date|required|before:'.date('Y-m-d'),
@@ -46,7 +46,6 @@ class DetalhesDaContaRequest extends FormRequest
             'email.email' => 'O email não esta no formato correto.',
             'email.unique' => 'Já existe alguem com esse email cadastrado.',
             'email.max' => 'Email tem tamanho maximo de 100 (cem) digitos.',
-            'endereco.required' => 'Endereco é um campo obrigatorio.',
             'endereco.min' => 'Preencha o endereço completo.',
             'endereco.max' => 'Endereco tem limite maximo 200(duzentos) caracteres.',
             'cpf.required' => 'CPF é um campo obrigatorio.',

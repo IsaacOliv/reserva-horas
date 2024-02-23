@@ -11,7 +11,7 @@ function filtraHorarios(horario){
     let dia_semana = 0;
 $.ajax({
     type: "get",
-    url: `horario/${horario}`,
+    url: `/admin/horario/${horario}`,
     success: function (response) {
         $.each(response, function (indexInArray, valueOfElement) {
             dia_semana = valueOfElement.dia_semana;
@@ -24,7 +24,6 @@ $.ajax({
                     </td>
                 </tr>
             `
-
         });
         $('#tabela-de-horarios').html(`
         <table>
